@@ -55,32 +55,10 @@ jobs:
                     },
                     {
                       "type": "section",
-                      "fields": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*📦 Repository*\n${{ github.repository }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*🌿 Branch*\n${{ github.ref_name }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*👤 Author*\n${{ github.actor }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*📝 Commit*\n${{ github.event.head_commit.message || github.event.pull_request.title }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*🔢 Run Number*\n#${{ github.run_number }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*⚙️ Workflow*\n${{ github.workflow }}"
-                        }
-                      ]
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*📦 Repository*\n`${{ github.repository }}`\n\n*🌿 Branch*\n`${{ github.ref_name }}`\n\n*👤 Author*\n`${{ github.actor }}`\n\n*📝 Commit*\n`${{ github.event.head_commit.message || github.event.pull_request.title }}`\n\n*🔢 Run Number*\n`#${{ github.run_number }}`\n\n*⚙️ Workflow*\n`${{ github.workflow }}`"
+                      }
                     },
                     {
                       "type": "actions",
@@ -121,32 +99,10 @@ jobs:
                     },
                     {
                       "type": "section",
-                      "fields": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*📦 Repository*\n${{ github.repository }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*🌿 Branch*\n${{ github.ref_name }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*👤 Author*\n${{ github.actor }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*📝 Commit*\n${{ github.event.head_commit.message || github.event.pull_request.title }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*🔢 Run Number*\n#${{ github.run_number }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*⚙️ Workflow*\n${{ github.workflow }}"
-                        }
-                      ]
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*📦 Repository*\n`${{ github.repository }}`\n\n*🌿 Branch*\n`${{ github.ref_name }}`\n\n*👤 Author*\n`${{ github.actor }}`\n\n*📝 Commit*\n`${{ github.event.head_commit.message || github.event.pull_request.title }}`\n\n*🔢 Run Number*\n`#${{ github.run_number }}`\n\n*⚙️ Workflow*\n`${{ github.workflow }}`"
+                      }
                     },
                     {
                       "type": "actions",
