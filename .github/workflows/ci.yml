@@ -34,13 +34,134 @@ jobs:
       - name: Run Build
         run: pnpm build
 
-      - name: Notify Slack
-        if: always()
+      - name: Notify Slack Success
+        if: success()
         uses: slackapi/slack-github-action@v3.0.3
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "${{ job.status == 'success' && '✅ Frontend CI Success' || '❌ Frontend CI Failed' }}"
+              "attachments": [
+                {
+                  "color": "good",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "🟢 Frontend CI Success"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*📦 Repository*\n${{ github.repository }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*🌿 Branch*\n${{ github.ref_name }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*👤 Author*\n${{ github.actor }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*📝 Commit*\n${{ github.event.head_commit.message || github.event.pull_request.title }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*🔢 Run Number*\n#${{ github.run_number }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*⚙️ Workflow*\n${{ github.workflow }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "GitHub Actions 보기"
+                          },
+                          "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Notify Slack Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v3.0.3
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "danger",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "🔴 Frontend CI Failed"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*📦 Repository*\n${{ github.repository }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*🌿 Branch*\n${{ github.ref_name }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*👤 Author*\n${{ github.actor }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*📝 Commit*\n${{ github.event.head_commit.message || github.event.pull_request.title }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*🔢 Run Number*\n#${{ github.run_number }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*⚙️ Workflow*\n${{ github.workflow }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "실패 로그 확인하기"
+                          },
+                          "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
