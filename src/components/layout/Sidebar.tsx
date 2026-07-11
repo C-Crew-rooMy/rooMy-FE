@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import Image, { type StaticImageData } from 'next/image';
+import { usePathname } from 'next/navigation';
 import activityIcon from '../../assets/icons/ic-activity.png';
 import albumIcon from '../../assets/icons/ic-album.png';
 import archiveIcon from '../../assets/icons/ic-archvie.png';
 import homeIcon from '../../assets/icons/ic-home.png';
 import settingIcon from '../../assets/icons/ic-setting.png';
-import './Sidebar.css';
 
 /*
 2026.07.06 add : 윤소정
@@ -19,43 +22,72 @@ const archiveMenus = [
   { label: 'Book', path: '/book' },
 ];
 
+const getLinkClassName = (pathname: string, path: string, className: string) => {
+  const isActive = path === '/' ? pathname === path : pathname.startsWith(path);
+
+  return isActive ? `${className} active` : className;
+};
+
+interface SidebarIconProps {
+  src: StaticImageData;
+  alt?: string;
+}
+
+const SidebarIcon = ({ src, alt = '' }: SidebarIconProps) => (
+  <Image src={src} className="sidebar__icon" alt={alt} aria-hidden={alt ? undefined : true} />
+);
+
 const Sidebar = () => {
+  const pathname = usePathname();
+
   return (
     <nav className="sidebar">
       <div className="sidebar__menu">
         <ul className="sidebar__main">
           <li>
-            <NavLink to="/" className="sidebar__link">
-              <img src={homeIcon} className="sidebar__icon" alt="" />
+            <Link href="/" className={getLinkClassName(pathname, '/', 'sidebar__link')}>
+              <SidebarIcon src={homeIcon} />
               <span>Home</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink to="/timeline" className="sidebar__link">
+            <Link
+              href="/timeline"
+              className={getLinkClassName(pathname, '/timeline', 'sidebar__link')}
+            >
               <span className="sidebar__clock" aria-hidden="true" />
               <span>Timeline</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink to="/album" className="sidebar__link">
-              <img src={albumIcon} className="sidebar__icon" alt="" />
+            <Link
+              href="/album"
+              className={getLinkClassName(pathname, '/album', 'sidebar__link')}
+            >
+              <SidebarIcon src={albumIcon} />
               <span>Album</span>
-            </NavLink>
+            </Link>
           </li>
         </ul>
 
         <div className="sidebar__section">
-          <NavLink to="/archive" className="sidebar__link">
-            <img src={archiveIcon} className="sidebar__icon" alt="" />
+          <Link
+            href="/archive"
+            className={getLinkClassName(pathname, '/archive', 'sidebar__link')}
+          >
+            <SidebarIcon src={archiveIcon} />
             <span>Archive</span>
-          </NavLink>
+          </Link>
 
           <ul className="sidebar__sub">
             {archiveMenus.map((menu) => (
               <li key={menu.path}>
-                <NavLink to={menu.path} className="sidebar__sub-link">
+                <Link
+                  href={menu.path}
+                  className={getLinkClassName(pathname, menu.path, 'sidebar__sub-link')}
+                >
                   {menu.label}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>
@@ -65,16 +97,22 @@ const Sidebar = () => {
 
         <ul className="sidebar__bottom">
           <li>
-            <NavLink to="/activity" className="sidebar__link">
-              <img src={activityIcon} className="sidebar__icon" alt="" />
+            <Link
+              href="/activity"
+              className={getLinkClassName(pathname, '/activity', 'sidebar__link')}
+            >
+              <SidebarIcon src={activityIcon} />
               <span>Activity</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink to="/setting" className="sidebar__link">
-              <img src={settingIcon} className="sidebar__icon" alt="" />
+            <Link
+              href="/setting"
+              className={getLinkClassName(pathname, '/setting', 'sidebar__link')}
+            >
+              <SidebarIcon src={settingIcon} />
               <span>Setting</span>
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>

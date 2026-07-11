@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import './AppLayout.css';
 import Sidebar from './Sidebar';
 
 /*
