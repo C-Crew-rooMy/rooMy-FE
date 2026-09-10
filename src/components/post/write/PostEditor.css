@@ -1,9 +1,9 @@
-/* 시안: 가로로 넓은 흰, 제목은 얇은 한 줄, 본문이 대부분 */
+/* 시안: 영역이 정해진 글쓰기 박스 — 본문 높이 고정, 넘치는 내용은 내부 스크롤 */
 .post-editor-wrap {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 480px;
+  height: 480px;
   padding: 14px 24px 20px;
   border: 1px solid rgba(225, 225, 218, 0.95);
   border-radius: 18px;
@@ -44,7 +44,8 @@
   position: relative;
   flex: 1;
   width: 100%;
-  min-height: 300px;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .post-editor-body--empty::before {
@@ -60,7 +61,7 @@
 
 .post-editor {
   width: 100%;
-  min-height: 300px;
+  min-height: 100%;
   outline: none;
   color: #3a3a36;
   font-size: 15px;
@@ -168,7 +169,7 @@
 
 @media (max-width: 768px) {
   .post-editor-wrap {
-    min-height: 280px;
+    height: 320px;
     padding: 12px 16px 16px;
     border-radius: 14px;
   }
@@ -177,10 +178,5 @@
     height: 32px;
     font-size: 15px;
     line-height: 32px;
-  }
-
-  .post-editor-body,
-  .post-editor {
-    min-height: 200px;
   }
 }
