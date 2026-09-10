@@ -34,12 +34,11 @@
   margin-top: 7px;
   color: #8d8d88;
 }
-.statusDot {
-  width: 9px;
-  height: 9px;
+.statusIcon {
+  width: 14px;
+  height: 14px;
   margin-left: 3px;
-  border-radius: 2px;
-  background: #9ab44d;
+  object-fit: contain;
 }
 .writeButton {
   display: inline-flex;
@@ -52,6 +51,11 @@
   font-size: 13px;
   text-decoration: none;
   box-shadow: 0 6px 16px rgba(45, 45, 42, 0.12);
+}
+.writeButton img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
 }
 .dashboard {
   display: grid;
@@ -92,11 +96,20 @@
   background-repeat: no-repeat;
   background-size: 300% 100%;
 }
-.poster {
-  aspect-ratio: 0.72;
-  border: 6px solid #4e514e;
-  border-radius: 3px;
+.filmFrame {
+  position: relative;
+  aspect-ratio: 130 / 170;
+  overflow: hidden;
+  background-image: url('../../assets/images/movie-frame-film.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   box-shadow: 0 7px 16px rgba(42, 39, 31, 0.16);
+}
+.poster {
+  position: absolute;
+  inset: 4% 13.5% 5%;
+  background-color: #474747;
 }
 .poster_one {
   background-position: 0 center;
@@ -129,14 +142,13 @@
 .note_peach {
   background: rgba(253, 228, 221, 0.88);
 }
-.pin {
+.quoteIcon {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  top: 9px;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 .note p {
   display: -webkit-box;
@@ -184,13 +196,27 @@
 .search input::placeholder {
   color: #aaa9a3;
 }
+.search > img {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
 .sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   padding: 8px 3px 8px 12px;
   border: 0;
   background: transparent;
   color: #777771;
   font-size: 12px;
   cursor: pointer;
+}
+.sortButton img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
 .reviewList {
   display: flex;
