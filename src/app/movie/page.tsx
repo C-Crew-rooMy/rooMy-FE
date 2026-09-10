@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import AppLayout from '@/components/layout/AppLayout';
 import styles from './MoviePage.module.css';
 
@@ -32,7 +31,7 @@ export default function MoviePage() {
             </div>
             <p className={styles.subtitle}>보고 느낀 영화의 장면과 마음을 모아두는 공간</p>
           </div>
-          <Link className={styles.writeButton} href="/movie/write">Write <span aria-hidden="true">✎</span></Link>
+          <span className={styles.writeButton}>Write <span aria-hidden="true">✎</span></span>
         </header>
 
         <section className={styles.dashboard} aria-label="영화 요약">

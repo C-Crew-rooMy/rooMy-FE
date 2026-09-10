@@ -18,11 +18,13 @@ import type { JSONContent } from '@tiptap/react';
 import './PostEditor.css';
 
 interface PostEditorProps {
+  title: string;
+  onTitleChange: (title: string) => void;
   content?: JSONContent;
   onChange?: (json: JSONContent) => void;
 }
 
-const PostEditor = ({ content, onChange }: PostEditorProps) => {
+const PostEditor = ({ content, onChange, title, onTitleChange }: PostEditorProps) => {
   const editor = useEditor({
     extensions: POST_EDITOR_EXTENSIONS,
     content: content ?? '',
@@ -49,15 +51,35 @@ const PostEditor = ({ content, onChange }: PostEditorProps) => {
       return {
         color: getPostEditorFontColor(editor),
         active,
+        isEmpty: editor.isEmpty,
       };
     },
   });
 
   if (!editor) return null;
 
+  const isBodyEmpty = toolbarState?.isEmpty ?? editor.isEmpty;
+
   return (
     <div className="post-editor-wrap">
-      <EditorContent editor={editor} />
+      <input
+        type="text"
+        className="post-editor-title"
+        placeholder="제목을 입력하세요"
+        value={title}
+        aria-label="게시글 제목"
+        onChange={(event) => onTitleChange(event.target.value)}
+      />
+
+      <div className="post-editor-divider" aria-hidden="true" />
+
+      <div
+        className={['post-editor-body', isBodyEmpty ? 'post-editor-body--empty' : '']
+          .filter(Boolean)
+          .join(' ')}
+      >
+        <EditorContent editor={editor} />
+      </div>
 
       <BubbleMenu editor={editor} className="post-editor-bubble">
         {POST_EDITOR_TOOLBAR_ITEMS.map((item) => {

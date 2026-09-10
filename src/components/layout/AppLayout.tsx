@@ -13,11 +13,12 @@ ex). const MoviePage = () => {
 
 interface AppLayoutProps {
   children: ReactNode;
+  className?: string;
 }
 
-function AppLayout({ children }: AppLayoutProps) {
+const AppLayout = ({ children, className }: AppLayoutProps) => {
   return (
-    <main className="app-layout">
+    <main className={['app-layout', className].filter(Boolean).join(' ')}>
       <div className="app-layout_panel">
         <aside className="app-layout_sidebar">
           <Sidebar />
@@ -27,6 +28,6 @@ function AppLayout({ children }: AppLayoutProps) {
       </div>
     </main>
   );
-}
+};
 
 export default AppLayout;

@@ -1,38 +1,118 @@
+/* 시안: 가로로 넓은 흰, 제목은 얇은 한 줄, 본문이 대부분 */
 .post-editor-wrap {
-  min-height: 240px;
-  padding: 16px 18px;
-  border-radius: 12px;
-  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 480px;
+  padding: 14px 24px 20px;
+  border: 1px solid rgba(225, 225, 218, 0.95);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 28px rgba(55, 45, 30, 0.05);
   box-sizing: border-box;
 }
 
-.post-editor {
-  min-height: 208px;
+.post-editor-title {
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #3a3a36;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 48px;
   outline: none;
-  color: #171717;
+  box-sizing: border-box;
+}
+
+.post-editor-title::placeholder {
+  color: #b8b8b0;
+  font-weight: 400;
+}
+
+.post-editor-divider {
+  width: 100%;
+  height: 1px;
+  margin: 2px 0 12px;
+  background: #ebebe6;
+}
+
+.post-editor-body {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 300px;
+}
+
+.post-editor-body--empty::before {
+  content: '내용을 입력해주세요';
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #b8b8b0;
+  font-size: 15px;
+  line-height: 1.7;
+  pointer-events: none;
+}
+
+.post-editor {
+  width: 100%;
+  min-height: 300px;
+  outline: none;
+  color: #3a3a36;
+  font-size: 15px;
   line-height: 1.7;
 }
 
+.post-editor > * {
+  width: 100%;
+}
+
 .post-editor p {
-  margin: 0.4em 0;
+  margin: 0.35em 0;
+}
+
+.post-editor p:first-child {
+  margin-top: 0;
 }
 
 .post-editor h1 {
-  margin: 0.6em 0 0.3em;
-  font-size: 1.6rem;
+  margin: 0.5em 0 0.25em;
+  font-size: 1.45rem;
   font-weight: 700;
 }
 
 .post-editor h2 {
-  margin: 0.6em 0 0.3em;
-  font-size: 1.3rem;
+  margin: 0.5em 0 0.25em;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
-.post-editor ul,
+/* Tailwind Preflight가 list-style: none을 넣어서 목록 표시를 다시 켬 */
+.post-editor ul {
+  margin: 0.4em 0;
+  padding-left: 1.4em;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
 .post-editor ol {
   margin: 0.4em 0;
   padding-left: 1.4em;
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+.post-editor li {
+  display: list-item;
+}
+
+.post-editor a {
+  color: #5b7a3a;
+  text-decoration: underline;
 }
 
 .post-editor blockquote {
@@ -45,6 +125,9 @@
 .post-editor-bubble {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 350px;
+  justify-content: space-around;
   gap: 2px;
   padding: 4px;
   border: 1px solid #e5e5e5;
@@ -62,7 +145,7 @@
   background: transparent;
   color: #171717;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -81,4 +164,23 @@
   border: 0;
   background: transparent;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .post-editor-wrap {
+    min-height: 280px;
+    padding: 12px 16px 16px;
+    border-radius: 14px;
+  }
+
+  .post-editor-title {
+    height: 32px;
+    font-size: 15px;
+    line-height: 32px;
+  }
+
+  .post-editor-body,
+  .post-editor {
+    min-height: 200px;
+  }
 }

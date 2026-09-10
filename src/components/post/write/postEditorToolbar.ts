@@ -29,16 +29,16 @@ export type PostEditorToolbarItem =
     };
 
 export const POST_EDITOR_TOOLBAR_ITEMS: PostEditorToolbarItem[] = [
-  { id: 'heading1', kind: 'toggle', label: 'H1', ariaLabel: '제목 1' },
-  { id: 'heading2', kind: 'toggle', label: 'H2', ariaLabel: '제목 2' },
-  { id: 'bold', kind: 'toggle', label: 'B', ariaLabel: '굵게' },
-  { id: 'italic', kind: 'toggle', label: 'I', ariaLabel: '기울임' },
-  { id: 'underline', kind: 'toggle', label: 'U', ariaLabel: '밑줄' },
-  { id: 'strike', kind: 'toggle', label: 'S', ariaLabel: '취소선' },
-  { id: 'bulletList', kind: 'toggle', label: '•', ariaLabel: '글머리 목록' },
-  { id: 'orderedList', kind: 'toggle', label: '1.', ariaLabel: '번호 목록' },
-  { id: 'blockquote', kind: 'toggle', label: '“', ariaLabel: '인용' },
-  { id: 'color', kind: 'color', label: 'A', ariaLabel: '글자색' },
+  { id: 'heading1', kind: 'toggle', label: 'H1 제목1', ariaLabel: '제목 1' },
+  { id: 'heading2', kind: 'toggle', label: 'H2 제목2', ariaLabel: '제목 2' },
+  { id: 'bold', kind: 'toggle', label: 'B 굵게', ariaLabel: '굵게' },
+  { id: 'italic', kind: 'toggle', label: 'I 기울임', ariaLabel: '기울임' },
+  { id: 'underline', kind: 'toggle', label: 'U 밑줄', ariaLabel: '밑줄' },
+  { id: 'strike', kind: 'toggle', label: 'S 취소선', ariaLabel: '취소선' },
+  { id: 'bulletList', kind: 'toggle', label: '• 글머리 목록', ariaLabel: '글머리 목록' },
+  { id: 'orderedList', kind: 'toggle', label: '1. 번호 목록', ariaLabel: '번호 목록' },
+  { id: 'blockquote', kind: 'toggle', label: '“ 인용', ariaLabel: '인용' },
+  { id: 'color', kind: 'color', label: 'A 글자색', ariaLabel: '글자색' },
 ];
 
 export const runPostEditorToolbarCommand = (

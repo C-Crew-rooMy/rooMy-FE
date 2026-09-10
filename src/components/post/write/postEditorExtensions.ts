@@ -7,6 +7,10 @@ import type { Extensions } from '@tiptap/react';
 export const POST_EDITOR_EXTENSIONS: Extensions = [
   StarterKit.configure({
     heading: { levels: [1, 2] },
+    //본문에서 링크 클릭 시 새 탭으로 열지 않도록 설정
+    link: {
+      openOnClick: false,
+    },
   }),
   TextStyle,
   Color,
