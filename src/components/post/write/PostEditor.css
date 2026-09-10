@@ -1,0 +1,84 @@
+.post-editor-wrap {
+  min-height: 240px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.post-editor {
+  min-height: 208px;
+  outline: none;
+  color: #171717;
+  line-height: 1.7;
+}
+
+.post-editor p {
+  margin: 0.4em 0;
+}
+
+.post-editor h1 {
+  margin: 0.6em 0 0.3em;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.post-editor h2 {
+  margin: 0.6em 0 0.3em;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.post-editor ul,
+.post-editor ol {
+  margin: 0.4em 0;
+  padding-left: 1.4em;
+}
+
+.post-editor blockquote {
+  margin: 0.5em 0;
+  padding-left: 0.8em;
+  border-left: 3px solid #d4d4d4;
+  color: #525252;
+}
+
+.post-editor-bubble {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.post-editor-bubble__button {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #171717;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.post-editor-bubble__button[aria-pressed='true'] {
+  background: #f3f3f3;
+}
+
+.post-editor-bubble__button:hover {
+  background: #f7f7f7;
+}
+
+.post-editor-bubble__color {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
