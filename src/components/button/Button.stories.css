@@ -1,0 +1,17 @@
+/* 스토리 확인용 패딩 — 실제 사용처에서는 className으로 조절 */
+.button-story {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.button__icon.button-story-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.button-story-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
